@@ -8,13 +8,14 @@ firebase.auth().onAuthStateChanged(function(user) {
         db.collection('hari').doc(queryString.get('id')).get().then((result) => {
             const timestamp = result.data().date; 
                 const date = timestamp.toDate();
-                const year = date.getFullYear();        
-                const month = ('0'+(date.getMonth() + 1)).slice(-2); 
-                const day = ('0' + date.getDate()).slice(-2); 
-                const hour = ('0' + date.getHours()).slice(-2);
-                const min = ('0' + date.getMinutes()).slice(-2)
-                const sec = ('0' + date.getSeconds()).slice(-2)
-
+                const [year, month, day, hour, min, sec] = [
+                    date.getFullYear(),
+                    ('0'+(date.getMonth() + 1)).slice(-2),
+                    ('0' + date.getDate()).slice(-2),
+                    ('0' + date.getHours()).slice(-2),
+                    ('0' + date.getMinutes()).slice(-2),
+                    ('0' + date.getSeconds()).slice(-2)
+                    ];
                 if (!result.data().image) {
                     let post = `
                             <div class="thispost">
@@ -60,7 +61,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
                     if (confirm('삭제하시겠습니까?')) {
                         db.collection('hari').doc(docId).delete().then(()=>{
-                            alert('성공적으로 삭제되었습니다.')
+                            alert('삭제되었습니다.')
                             window.location.href = 'hari.html'
                         }).catch((error) => {
                             console.log('게시글 삭제 중 에러가 발생했습니다:', error);

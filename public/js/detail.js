@@ -44,16 +44,12 @@ firebase.auth().onAuthStateChanged(function(user) {
                 }
                 
                 if (result.data().uid == user.uid) {
-                    console.log('내 글입니다.')
-                    console.log(result.id)
                     let btn = `
                                 <div class='btn_area_modify'>
                                     <button type="button" class="btn btn-primary modify"><a href="/edit.html?id=${result.id}">수정</a></button>
                                     <button type="button" class="btn btn-danger delete" data-id='${result.id}'>삭제</button>
                                 </div>`
                     document.querySelector('div.thispost').insertAdjacentHTML("afterend", btn)
-                } else {
-                    console.log('내 글이 아닙니다.')
                 }
 
                 $('.delete').on('click', function() {
@@ -61,7 +57,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
                     if (confirm('삭제하시겠습니까?')) {
                         db.collection('board').doc(docId).delete().then(()=>{
-                            alert('성공적으로 삭제되었습니다.')
+                            alert('삭제되었습니다.')
                             window.location.href = 'board.html'
                         }).catch((error) => {
                             console.log('게시글 삭제 중 에러가 발생했습니다:', error);
