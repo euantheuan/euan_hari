@@ -31,7 +31,7 @@ $('#send').on('click', function () {
                 db.collection('hari').add(post)
                     .then(() => {
                         alert('게시글을 저장했습니다.');
-                        window.location.href = 'board.html';
+                        window.location.href = 'hari.html';
                     })
                     .catch((err) => {
                         console.log(err);
