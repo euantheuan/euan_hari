@@ -1,0 +1,126 @@
+@charset "utf-8";
+@import url(reset.css);
+@import url(font.css);
+
+div.wrapper {
+    margin: 70px auto 0;
+    padding: 0 50px;
+    max-width: 800px;
+}
+div.btn_area {
+    text-align: right;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+div.btn_area button:first-child {
+    margin-right: 10px;
+}
+ul#board {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    margin-bottom: 50px;
+}
+ul#board li {
+    padding: 15px 5px; 
+}
+ul#board li + li {
+    border-top: 1px solid #ccc;
+}
+ul#board li div.title_area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+ul#board li p.title {
+    display: inline-block;
+    width: calc(90% - 30px - 150px);
+    font-weight: 600;
+    color: black;
+    line-height: 1.5;
+    margin-right: 10px;
+}
+ul#board li p.title > a {
+    display: inline-block;
+    max-width: 100%;
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;-webkit-line-clamp: 1;
+}
+ul#board li p.title > a:hover:after {
+    content: '';
+    background-color: #585858;
+    width: 100%; height: 1px;
+    display: block;
+    position: absolute;
+    bottom: 0; left: 0;
+}
+ul#board li p.writer {
+    width: 10%;
+    margin-right: 15px;
+    font-size: 14px;
+}
+ul#board li p.date {
+    width: 150px;
+    max-width: 150px;
+    font-size: 14px;
+    text-align: right;
+}
+ul#board li p.content {
+    line-height: 1.5;
+    word-break: break-word;
+    display: -webkit-box;-webkit-line-clamp: 2;
+}
+
+ul#board li p.title,
+ul#board li p.content {
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    -webkit-box-orient: vertical;
+}
+
+p.alert {
+    line-height: 200px;
+    font-weight: 600;
+    font-size: 20px;
+    color: black;
+    text-align: center;
+}
+ul#board figure {
+    margin: 0 auto 10px;
+}
+
+@media screen and (max-width: 768px) {
+    div.wrapper {
+        margin-top: 80px;
+        padding: 0 4%;
+    }
+    ul#board li div.title_area {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
+        margin-bottom: 10px;
+    }
+    ul#board li p.title {
+        width: 100%;
+        font-weight: 600;
+        color: black;
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+    ul#board li p.writer {
+        width: auto;
+        margin-right: 15px; 
+        font-size: 14px;
+    }
+    ul#board li p.date {
+        width: auto;
+        font-size: 14px;
+        text-align: left;
+    }
+    ul#board li p.content {
+        line-height: 1.5;
+        -webkit-line-clamp: 3;
+    }
+}

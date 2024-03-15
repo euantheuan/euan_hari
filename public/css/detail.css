@@ -1,0 +1,108 @@
+@charset "utf-8";
+@import url(reset.css);
+@import url(font.css);
+@import url(all.min.css);
+
+div.wrapper {
+    margin: 70px auto 0;
+    padding: 0 50px;
+    max-width: 800px;
+}
+div.thispost {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    margin-bottom: 20px;
+    padding: 15px 5px; 
+}
+div.thispost div.title_area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+div.thispost div.btn_area {
+    text-align: right;
+}
+div.thispost p.title {
+    width: calc(70% - 30px);
+    font-weight: 600;
+    color: black;
+    line-height: 1.5;
+    margin-right: 10px;
+}
+div.thispost p.writer {
+    width: 10%;
+    margin-right: 15px;
+    font-size: 14px;
+}
+div.thispost p.date {
+    width: 20%;
+    max-width: 150px;
+    font-size: 14px;
+    text-align: right;
+}
+div.thispost p.content {
+    line-height: 1.5;
+}
+
+div.btn_area {
+    text-align: right;
+    margin-bottom: 20px;
+}
+div.btn_area button:first-child {
+    margin-right: 10px;
+}
+p.alert {
+    line-height: 200px;
+    font-weight: 600;
+    font-size: 20px;
+    color: black;
+    text-align: center;
+}
+
+div.thispost figure {
+    margin: 0 auto 10px;
+}
+
+div.btn_area_modify {
+    text-align: center;
+    margin: 0 auto 50px;
+}
+div.btn_area_modify button:first-child {
+    margin-right: 10px;
+}
+
+
+@media screen and (max-width: 768px) {
+    div.wrapper {
+        margin-top: 80px;
+        padding: 0 4%;
+    }
+    div.thispost div.title_area {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
+        margin-bottom: 10px;
+    }
+    div.thispost p.title {
+        width: 100%;
+        font-weight: 600;
+        color: black;
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+    div.thispost p.writer {
+        width: auto;
+        margin-right: 15px; 
+        font-size: 14px;
+    }
+    div.thispost p.date {
+        width: auto;
+        font-size: 14px;
+        text-align: left;
+    }
+    div.thispost p.content {
+        line-height: 1.5;
+    }
+}
