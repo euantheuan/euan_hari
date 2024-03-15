@@ -7,13 +7,6 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
 })
 
-$(document).ready(function() {
-    setTimeout(removeLoad, 500)
-    function removeLoad() {
-        $('div.load').hide();
-    }
-})
-
 $('div.mobile').click(function() {
     $(this).toggleClass('on off');
     if ($(this).hasClass('on')) {
@@ -29,5 +22,4 @@ $('div.mobile').click(function() {
 
 $('li.mypage').click(function() {
         $('li.mypage > ul.depth02').slideToggle();
-
 })

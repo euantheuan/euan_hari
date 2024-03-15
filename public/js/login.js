@@ -50,3 +50,10 @@ $('#login_google').on('click', function() {
         alert('취소하셨습니다.')
     }
 })
+
+$(document).ready(function() {
+    setTimeout(removeLoad, 500)
+    function removeLoad() {
+        $('div.load').hide();
+    }
+})

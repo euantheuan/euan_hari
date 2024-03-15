@@ -74,3 +74,9 @@ $('#login_apple').on('click', function() {
     }
 })
 
+$(document).ready(function() {
+    setTimeout(removeLoad, 500)
+    function removeLoad() {
+        $('div.load').hide();
+    }
+})
