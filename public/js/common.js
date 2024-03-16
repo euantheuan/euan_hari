@@ -21,5 +21,6 @@ $('div.mobile').click(function() {
 })
 
 $('li.mypage').click(function() {
-        $('li.mypage > ul.depth02').slideToggle();
+    $(this).toggleClass('off on')
+    $('li.mypage > ul.depth02').slideToggle();
 })

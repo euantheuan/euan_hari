@@ -136,7 +136,14 @@ div.gnb_area li.mypage {
     cursor: pointer;
     position: relative;
 }
-div.gnb_area li.mypage:after {
+div.gnb_area li.mypage.on:after {
+    content: '\f077';
+    position: absolute;
+    right: 40px; top: 10px;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 600;
+}
+div.gnb_area li.mypage.off:after {
     content: '\f078';
     position: absolute;
     right: 40px; top: 10px;
