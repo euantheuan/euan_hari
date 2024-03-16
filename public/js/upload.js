@@ -30,13 +30,13 @@ $('#send').on('click', function () {
             const uploadToFirestore = (post) => {
                 db.collection('board').add(post)
                     .then((docRef) => {
-                        db.collection('board').doc(docRef.id).collection('replies').doc().set();
+                        db.collection('board').doc(docRef.id).collection('replies').doc().set({initialField: true});
                         alert('게시글을 저장했습니다.');
                         window.location.href = 'board.html';
                     })
                     .catch((err) => {
                         console.log(err);
-                        alert('오류가 발생했습니다. 로그인은 하셨나요?');
+                        alert('오류가 발생했습니다.');
                     });
             };
 

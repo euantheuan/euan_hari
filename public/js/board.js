@@ -50,7 +50,7 @@ db.collection('board').orderBy("date", "asc").onSnapshot((snapshot) => {
             if (numSnapshot > 1) {
                 const postTitle = board.querySelector(`.title[data-id="${docId}"]`);
 
-                const num = `<span class='num'>+ ${numSnapshot - 1}</span>`
+                const num = `<span class='num'>+ ${numSnapshot -1}</span>`
                 postTitle.insertAdjacentHTML('beforeend', num);
             }
         }).catch((error)=>{
