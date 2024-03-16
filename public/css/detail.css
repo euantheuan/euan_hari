@@ -92,6 +92,7 @@ div.thisreply div.reply_content {
 }
 div.thisreply p.content_reply {
     width: calc(80% - 165px);
+    color: black;
 }
 div.thisreply p.writer_reply {
     width: auto;    
