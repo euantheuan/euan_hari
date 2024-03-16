@@ -88,13 +88,13 @@ div.thisreply div.reply_content {
     justify-content: space-between;
     align-items: start;
     flex-wrap: wrap;
-    width: calc(100% - 30px)
+    width: 100%;
 }
 div.thisreply p.content_reply {
-    width: calc(80% - 150px);
+    width: calc(80% - 165px);
 }
 div.thisreply p.writer_reply {
-    width: 20%;    
+    width: auto;    
     text-align: right;
     margin-right: 15px;
     font-size: 14px;
