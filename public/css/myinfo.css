@@ -14,10 +14,3 @@ div.btn_area button {
     display: block;
     margin: 0 auto 20px;
 }
-p.alert {
-    line-height: 200px;
-    font-weight: 600;
-    font-size: 20px;
-    color: black;
-    text-align: center;
-}
