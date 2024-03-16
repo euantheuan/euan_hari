@@ -134,6 +134,14 @@ div.gnb_area li.mypage {
     margin: 10px 0;
     padding: 10px 30px;
     cursor: pointer;
+    position: relative;
+}
+div.gnb_area li.mypage:after {
+    content: '\f078';
+    position: absolute;
+    right: 40px; top: 10px;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 600;
 }
 header div.gnb_area ul.depth02 {
     border: solid 1px #ccc;
@@ -157,12 +165,13 @@ header div.gnb_area ul.depth02 > li a {
     padding-left: 20px;
 
 }
-header i {
+header i:first-child {
     margin-right: 7px;
     width: 22px;
     text-align: center;
     color: #ffc105;
 }
+
 div.alert {
     text-align: center;
 }
