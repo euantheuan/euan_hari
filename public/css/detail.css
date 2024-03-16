@@ -68,12 +68,61 @@ div.thispost figure {
 
 div.btn_area_modify {
     text-align: center;
-    margin: 0 auto 50px;
+    margin: 30px auto 50px;
 }
 div.btn_area_modify button:first-child {
     margin-right: 10px;
 }
 
+div.thisreply {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 10px;
+}
+div.thisreply div.reply_content {
+    padding: 10px 20px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-wrap: wrap;
+    width: calc(100% - 30px)
+}
+div.thisreply p.content_reply {
+    width: calc(80% - 150px);
+}
+div.thisreply p.writer_reply {
+    width: 20%;    
+    text-align: right;
+    margin-right: 15px;
+    font-size: 14px;
+}
+div.thisreply p.date_reply {
+    width: 150px;
+    max-width: 150px;
+    font-size: 14px;
+    text-align: right;
+}
+
+div.replyInput {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+div.replyInput textarea {
+    width: calc(100% - 100px)
+}
+span.btnDeleteReply {
+    padding: 6px;
+    font-size: 18px;
+    margin-left: 10px;
+    color: black;
+    text-align: center;
+    cursor: pointer;
+}
 
 @media screen and (max-width: 768px) {
     div.wrapper {
@@ -105,5 +154,19 @@ div.btn_area_modify button:first-child {
     }
     div.thispost p.content {
         line-height: 1.5;
+    }
+    
+    div.thisreply p.content_reply {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    div.thisreply p.writer_reply {
+        width: auto;    
+        text-align: left;
+        margin-right: 15px;
+    }
+    div.thisreply p.date_reply {
+        width: auto;
+        text-align: right;
     }
 }

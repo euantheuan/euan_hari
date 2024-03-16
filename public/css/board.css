@@ -52,7 +52,7 @@ ul#board li p.title > a:hover:after {
     width: 100%; height: 1px;
     display: block;
     position: absolute;
-    bottom: 1px; left: 0;
+    bottom: 2px; left: 0;
 }
 ul#board li p.writer {
     width: 20%;
@@ -91,7 +91,6 @@ ul#board figure {
         display: flex;
         flex-wrap: wrap;
         justify-content: start;
-        margin-bottom: 10px;
     }
     ul#board li p.title {
         width: 100%;

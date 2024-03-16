@@ -29,7 +29,8 @@ $('#send').on('click', function () {
 
             const uploadToFirestore = (post) => {
                 db.collection('board').add(post)
-                    .then(() => {
+                    .then((docRef) => {
+                        db.collection('board').doc(docRef.id).collection('replies').doc().set({ initialReply: true });
                         alert('게시글을 저장했습니다.');
                         window.location.href = 'board.html';
                     })
@@ -65,4 +66,3 @@ $('#send').on('click', function () {
         alert('제목과 본문을 모두 입력하세요.');
     }
 });
-
