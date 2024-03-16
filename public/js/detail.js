@@ -1,8 +1,12 @@
 const db = firebase.firestore();
 const storage = firebase.storage();
-
 firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
+    if (!user) {
+        $('div.wrapper').empty();
+        let signIn = "<div class='alert'><p><a href='login.html'>로그인 후 이용해주세요.</a></p></div>"
+        $('div.wrapper').append(signIn);
+    } else {
+
         let queryString = new URLSearchParams(window.location.search)
 
         db.collection('board').doc(queryString.get('id')).get().then((result) => {
@@ -71,11 +75,9 @@ firebase.auth().onAuthStateChanged(function(user) {
             console.log(error)
             alert('에러가 발생했습니다.')
         })
-    } else {
-        $('div.wrapper').empty();
-        let signIn = "<p class='alert'><a href="login.html">로그인 후 이용하세요.</a></p>"
-        $('div.wrapper').append(signIn);
+
     }
 })
+        
 
 

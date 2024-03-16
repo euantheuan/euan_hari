@@ -1,12 +1,6 @@
 const db = firebase.firestore();
 const storage = firebase.storage();
 
-firebase.auth().onAuthStateChanged(function (user) {
-    if (!user) {
-        $('.container').empty().append('<h5>로그인 후 이용하세요.</h5>');
-    }
-});
-
 
 $('#send').on('click', function () {
     const title = $('#title').val();
