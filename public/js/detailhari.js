@@ -77,7 +77,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         })
     } else {
         $('div.wrapper').empty();
-        let signIn = "<p class='alert'>로그인 후 이용하세요.</p>"
+        let signIn = "<p class='alert'><a href="login.html">로그인 후 이용하세요.</a></p>"
         $('div.wrapper').append(signIn);
     }
 })

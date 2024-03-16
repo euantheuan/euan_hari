@@ -7,27 +7,3 @@ firebase.auth().onAuthStateChanged(function(user) {
         $('div.container').append(signIn);
     }
 })
-
-
-    window.formbutton=window.formbutton||function(){(formbutton.q=formbutton.q||[]).push(arguments)};
-    /* customize formbutton below*/     
-    formbutton("create", {
-        action: "https://formspree.io/f/mwkgqgqn",
-        title: "How can we help?",
-        fields: [
-        { 
-            type: "email", 
-            label: "이메일:", 
-            name: "email",
-            required: true,
-            placeholder: "your@email.com"
-        },
-        {
-            type: "textarea",
-            label: "건의사항:",
-            name: "message",
-            placeholder: "불편하신 점이라도 있나요?",
-        },
-        { type: "submit" }      
-        ]
-    });

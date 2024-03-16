@@ -78,7 +78,7 @@ firebase.auth().onAuthStateChanged((user) => {
         })
     } else {
         $('ul#board').remove();
-        let signIn = "<p class='alert'>로그인 후 이용하세요.</p>"
+        let signIn = "<p class='alert'><a href="login.html">로그인 후 이용하세요.</a></p>"
         $('div.wrapper').append(signIn)
     }
 });

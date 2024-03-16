@@ -3,7 +3,7 @@ const storage = firebase.storage();
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (!user) {
-        $('.container').empty().append('<p class="alert">로그인 후 이용하세요.</p>');
+        $('.container').empty().append('<p class="alert"><a href="login.html">로그인 후 이용하세요.</a></p>');
     }
 });
 
