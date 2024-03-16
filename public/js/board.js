@@ -47,10 +47,10 @@ db.collection('board').orderBy("date", "asc").onSnapshot((snapshot) => {
         const repliesRef = db.collection('board').doc(docId).collection('replies')
         repliesRef.get().then((snapshot) => {
             const numSnapshot = snapshot.size;
-            if (numSnapshot > 0) {
+            if (numSnapshot > 1) {
                 const postTitle = board.querySelector(`.title[data-id="${docId}"]`);
 
-                const num = `<span class='num'>+ ${numSnapshot}</span>`
+                const num = `<span class='num'>+ ${numSnapshot - 1}</span>`
                 postTitle.insertAdjacentHTML('beforeend', num);
             }
         }).catch((error)=>{

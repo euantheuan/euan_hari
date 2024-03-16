@@ -30,7 +30,7 @@ $('#send').on('click', function () {
             const uploadToFirestore = (post) => {
                 db.collection('board').add(post)
                     .then((docRef) => {
-                        db.collection('board').doc(docRef.id).collection('replies').doc().set({ initialReply: true });
+                        db.collection('board').doc(docRef.id).collection('replies').doc().set();
                         alert('게시글을 저장했습니다.');
                         window.location.href = 'board.html';
                     })
