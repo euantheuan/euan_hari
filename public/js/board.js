@@ -19,7 +19,7 @@ db.collection('board').orderBy("date", "asc").onSnapshot((snapshot) => {
         if (!doc.data().image) {
             let post = `<li class='post'>
                             <div class="title_area">
-                                <p class="title"><a href="/detail.html?id=${docId}">${doc.data().title}</a></p>
+                                <p class="title" data-id="${docId}"><a href="/detail.html?id=${docId}">${doc.data().title}</a></p>
                                 <p class="writer">${doc.data().writer} </p>
                                 <p class="date">${year}-${month}-${day} ${hour}:${min}:${sec}</p>
                             </div>
@@ -30,7 +30,7 @@ db.collection('board').orderBy("date", "asc").onSnapshot((snapshot) => {
         } else {
             let post = `<li class='post'>
                             <div class="title_area">
-                                <p class="title"><a href="/detail.html?id=${docId}"><i class="fa-regular fa-file-image"></i> ${doc.data().title}</a></p>
+                                <p class="title" data-id="${docId}"><a href="/detail.html?id=${docId}"><i class="fa-regular fa-file-image"></i> ${doc.data().title}</a></p>
                                 <p class="writer">${doc.data().writer} </p>
                                 <p class="date">${year}-${month}-${day} ${hour}:${min}:${sec}</p>
                             </div>
@@ -43,7 +43,18 @@ db.collection('board').orderBy("date", "asc").onSnapshot((snapshot) => {
             board.insertAdjacentHTML('afterbegin', post);
         }
 
-        
 
+        const repliesRef = db.collection('board').doc(docId).collection('replies')
+        repliesRef.get().then((snapshot) => {
+            const numSnapshot = snapshot.size;
+            if (numSnapshot > 0) {
+                const postTitle = board.querySelector(`.title[data-id="${docId}"]`);
+
+                const num = `<span class='num'>+ ${numSnapshot}</span>`
+                postTitle.insertAdjacentHTML('beforeend', num);
+            }
+        }).catch((error)=>{
+            console.log(error)
+        })
     })
 })

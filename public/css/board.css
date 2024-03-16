@@ -38,6 +38,9 @@ ul#board li p.title {
     line-height: 31px;
     height: 31px;
     margin-right: 10px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
 }
 ul#board li p.title > a {
     display: inline-block;
@@ -53,6 +56,12 @@ ul#board li p.title > a:hover:after {
     display: block;
     position: absolute;
     bottom: 2px; left: 0;
+}
+ul#board li p.title span.num {
+    color: #ccc;
+    font-size: 14px;
+    margin-left: 15px;
+    line-height: 31px;
 }
 ul#board li p.writer {
     width: 20%;
