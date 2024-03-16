@@ -23,7 +23,7 @@ db.collection('board').orderBy("date", "asc").onSnapshot((snapshot) => {
                                 <p class="writer">${doc.data().writer} </p>
                                 <p class="date">${year}-${month}-${day} ${hour}:${min}:${sec}</p>
                             </div>
-                            <p class="content">${doc.data().content}</p>
+                            <!-- <p class="content">${doc.data().content}</p> -->
                         </li>`;
 
             board.insertAdjacentHTML('afterbegin', post);
@@ -34,10 +34,10 @@ db.collection('board').orderBy("date", "asc").onSnapshot((snapshot) => {
                                 <p class="writer">${doc.data().writer} </p>
                                 <p class="date">${year}-${month}-${day} ${hour}:${min}:${sec}</p>
                             </div>
-                            <figure class='mw-100'>
+                            <!-- <figure class='mw-100'>
                                 <img src="${doc.data().image}" class='thumbnail object-fit-contain border rounded'>
                             </figure>
-                            <p class="content">${doc.data().content}</p>
+                            <p class="content">${doc.data().content}</p> -->
                         </li>`;
 
             board.insertAdjacentHTML('afterbegin', post);
