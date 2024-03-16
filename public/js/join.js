@@ -12,8 +12,6 @@ firebase.auth().onAuthStateChanged(function(user) {
                 firebase.auth().signOut();
                 alert('안녕히 가세요.')
                 window.location.href = 'index.html'
-            } else {
-                alert('취소하셨습니다.')
             }
         });
     }
@@ -39,8 +37,6 @@ $('#register').on('click', function() {
                 alert('에러가 발생했습니다.')
                 console.log('실패 사유는:', error)
             })
-        } else {
-            alert('취소하셨습니다.')
         }
 })
 
@@ -54,12 +50,10 @@ $('#login_google').on('click', function() {
             console.log('실패 사유는:', error)
             alert('오류가 발생했습니다.')
         })
-    } else {
-        alert('취소하셨습니다.')
     }
 })
 
-$('#login_apple').on('click', function() {
+/* $('#login_apple').on('click', function() {
     if (confirm('애플 계정으로 로그인하시겠습니까?')) {
         firebase.auth().signInWithPopup(provider).then(function() {
             //var token = result.credential.accessToken;
@@ -69,10 +63,8 @@ $('#login_apple').on('click', function() {
             console.log('실패 사유는:', error)
             alert('오류가 발생했습니다.')
         })
-    } else {
-        alert('취소하셨습니다.')
     }
-})
+}) */
 
 $(document).ready(function() {
     setTimeout(removeLoad, 500)

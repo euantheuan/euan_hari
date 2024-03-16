@@ -64,7 +64,6 @@ firebase.auth().onAuthStateChanged((user) => {
 
                 if (confirm('삭제하시겠습니까?')) {
                     db.collection('board').doc(docId).delete().then(()=>{
-                        alert('삭제되었습니다.')
                         $(this).closest('.post').remove();
                         window.location.href = 'mypost.html'
                     }).catch((error) => {

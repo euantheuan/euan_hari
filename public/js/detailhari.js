@@ -45,15 +45,12 @@ firebase.auth().onAuthStateChanged(function(user) {
                 }
                 
                 if (result.data().uid == user.uid) {
-                    console.log('내 글입니다.')
                     let btn = `
                                 <div class='btn_area_modify'>
                                     <button type="button" class="btn btn-primary modify"><a href="/edit.html?id=${result.id}">수정</a></button>
                                     <button type="button" class="btn btn-danger delete" data-id='${result.id}'>삭제</button>
                                 </div>`
                     document.querySelector('div.thispost').insertAdjacentHTML("afterend", btn)
-                } else {
-                    console.log('내 글이 아닙니다.')
                 }
 
                 $('.delete').on('click', function() {
@@ -67,8 +64,6 @@ firebase.auth().onAuthStateChanged(function(user) {
                             console.log('게시글 삭제 중 에러가 발생했습니다:', error);
                             alert('게시글 삭제 중 에러가 발생했습니다.')
                         });
-                    } else {
-                        alert('취소하셨습니다.')
                     }
                 })
         }).catch((error) => {

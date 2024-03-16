@@ -13,8 +13,6 @@ $('#login').on('click', function() {
             alert('오류가 발생했습니다. 다시 시도하세요.')
             console.log(error)
         })
-    } else {
-        alert('취소하셨습니다.')
     }
 })
 
@@ -29,8 +27,6 @@ firebase.auth().onAuthStateChanged(function(user) {
                 firebase.auth().signOut();
                 alert('안녕히 가세요.')
                 window.location.href = 'index.html'
-            } else {
-                alert('취소하셨습니다.')
             }
         });
     }
@@ -46,8 +42,6 @@ $('#login_google').on('click', function() {
             console.log('실패 사유는:', error)
             alert('오류가 발생했습니다.')
         })
-    } else {
-        alert('취소하셨습니다.')
     }
 })
 

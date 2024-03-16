@@ -116,8 +116,6 @@ firebase.auth().onAuthStateChanged(function(user) {
                                             console.log('게시글 삭제 중 에러가 발생했습니다:', error);
                                             alert('게시글 삭제 중 에러가 발생했습니다.')
                                         });
-                                    } else {
-                                        alert('취소하셨습니다.')
                                     }
                                 })
                             }
@@ -133,14 +131,11 @@ firebase.auth().onAuthStateChanged(function(user) {
 
                 if (confirm('삭제하시겠습니까?')) {
                     db.collection('board').doc(docId).delete().then(()=>{
-                        alert('삭제되었습니다.')
                         window.location.href = 'board.html'
                     }).catch((error) => {
                         console.log('게시글 삭제 중 에러가 발생했습니다:', error);
                         alert('게시글 삭제 중 에러가 발생했습니다.')
                     });
-                } else {
-                    alert('취소하셨습니다.')
                 }
             })
 
@@ -159,7 +154,6 @@ firebase.auth().onAuthStateChanged(function(user) {
                     function uploadReply () {
                         const repliesRef = db.collection('board').doc(mainPostId).collection('replies');
                         repliesRef.add(replyPost).then(() => {
-                            alert('댓글을 저장했습니다.')
                             location.reload(true);
                         }).catch((error) => {
                             alert('에러가 발생했습니다.')
