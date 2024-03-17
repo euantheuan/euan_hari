@@ -58,7 +58,7 @@ ul#board li p.title > a:hover:after {
     bottom: 2px; left: 0;
 }
 ul#board li p.title span.num {
-    color: #ccc;
+    color: #959595;
     font-size: 14px;
     margin-left: 15px;
     line-height: 31px;
