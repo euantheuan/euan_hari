@@ -23,7 +23,8 @@ $('#send').on('click', function () {
 
             const uploadToFirestore = (post) => {
                 db.collection('hari').add(post)
-                    .then(() => {
+                    .then((docRef) => {
+                        db.collection('hari').doc(docRef.id).collection('replies').doc().set({initialField: true});
                         alert('게시글을 저장했습니다.');
                         window.location.href = 'hari.html';
                     })

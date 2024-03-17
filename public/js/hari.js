@@ -14,36 +14,42 @@ db.collection('hari').orderBy("date", "asc").onSnapshot((snapshot) => {
             ('0' + date.getSeconds()).slice(-2)
             ];
         let docId = doc.id;
+        const board = document.querySelector('ul#board');
 
         if (!doc.data().image) {
             let post = `<li class='post'>
                             <div class="title_area">
-                                <p class="title"><a href="/detailhari.html?id=${docId}">${doc.data().title}</a></p>
+                                <p class="title" data-id="${docId}"><a href="/detailhari.html?id=${docId}">${doc.data().title}</a></p>
                                 <p class="writer">${doc.data().writer} </p>
                                 <p class="date">${year}-${month}-${day} ${hour}:${min}:${sec}</p>
                             </div>
-                            <p class="content">${doc.data().content}</p>
                         </li>`;
 
-            const board = document.querySelector('ul#board')
             board.insertAdjacentHTML('afterbegin', post);
             
         } else {
             let post = `<li class='post'>
                             <div class="title_area">
-                                <p class="title"><a href="/detailhari.html?id=${docId}"><i class="fa-regular fa-file-image"></i> ${doc.data().title}</a></p>
+                                <p class="title" data-id="${docId}"><a href="/detailhari.html?id=${docId}"><i class="fa-regular fa-file-image"></i> ${doc.data().title}</a></p>
                                 <p class="writer">${doc.data().writer} </p>
                                 <p class="date">${year}-${month}-${day} ${hour}:${min}:${sec}</p>
                             </div>
-                            <figure class='mw-100'>
-                                <img src="${doc.data().image}" class='thumbnail object-fit-contain border rounded'>
-                            </figure>
-                            <p class="content">${doc.data().content}</p>
                         </li>`;
 
-            const board = document.querySelector('ul#board')
+
             board.insertAdjacentHTML('afterbegin', post);
         }
+        const repliesRef = db.collection('hari').doc(docId).collection('replies')
+        repliesRef.get().then((snapshot) => {
+            const numSnapshot = snapshot.size;
+            if (numSnapshot > 1) {
+                const postTitle = board.querySelector(`.title[data-id="${docId}"]`);
+                const num = `<span class='num'>+ ${numSnapshot -1}</span>`
+                postTitle.insertAdjacentHTML('beforeend', num);
+            }
+        }).catch((error)=>{
+            console.log(error)
+        })
     })
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
@@ -52,7 +58,7 @@ db.collection('hari').orderBy("date", "asc").onSnapshot((snapshot) => {
                                 <button type="button" class="btn btn-warning"><a href="uploadhari.html">글 작성하기</a></button>
                             </div>`
                 
-                document.querySelector('ul#board').insertAdjacentHTML('beforebegin', btn);
+                board.insertAdjacentHTML('beforebegin', btn);
             }
         }
     })
