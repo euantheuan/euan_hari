@@ -6,7 +6,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         $('.container').empty();
         console.log('이미 로그인되어 있습니다.')
         document.querySelector('.container').innerHTML = 
-        "<h5>이미 로그인되어 있습니다.</h5><div class='btn_area'><button id='logout' class='btn btn-danger'>로그아웃하기</button></div>";
+        "<h5>이미 로그인되어 있습니다.</h5><div class='btn_area'><button id='logout' class='delete'>로그아웃하기</button></div>";
         $('#logout').on('click', function() {
             if (confirm('로그아웃하시겠습니까?')) {
                 firebase.auth().signOut();

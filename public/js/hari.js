@@ -55,7 +55,7 @@ db.collection('hari').orderBy("date", "asc").onSnapshot((snapshot) => {
         if (user) {
             if (user.uid == 'OUGroZYMhXaRNR7fHlInY7qfzNR2' || '6LcuB5b1Ebb69mbwNlaNCFDdIA53') {
                 let btn = `<div class="btn_area">
-                                <button type="button" class="btn btn-warning"><a href="uploadhari.html">글 작성하기</a></button>
+                                <button type="button" class="upload"><a href="uploadhari.html">글 작성하기</a></button>
                             </div>`
                 
                 board.insertAdjacentHTML('beforebegin', btn);

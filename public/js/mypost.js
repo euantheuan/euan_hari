@@ -25,8 +25,8 @@ firebase.auth().onAuthStateChanged((user) => {
                                         </div>
                                         <p class="content">${doc.data().content}</p>
                                         <div class='btn_area'>
-                                            <button type="button" class="btn btn-primary modify"><a href="/edit.html?id=${doc.id}">수정</a></button>
-                                            <button type="button" class="btn btn-danger delete" data-id='${doc.id}'>삭제</button>
+                                            <button type="button" class="modify">수정</button>
+                                            <button type="button" class="delete" data-id='${doc.id}'>삭제</button>
                                         </div>
                                     </li>`;
                         $('ul#board').append(postmy)
@@ -50,8 +50,8 @@ firebase.auth().onAuthStateChanged((user) => {
                                         </figure>
                                         <p class="content">${doc.data().content}</p>
                                         <div class='btn_area'>
-                                            <button type="button" class="btn btn-primary modify"><a href="/edit.html?id=${doc.id}">수정</a></button>
-                                            <button type="button" class="btn btn-danger delete" data-id='${doc.id}'>삭제</button>
+                                            <button type="button" class="modify">수정</button>
+                                            <button type="button" class="delete" data-id='${doc.id}'>삭제</button>
                                         </div>
                                     </li>`;
                         $('ul#board').append(postmy)
@@ -73,6 +73,9 @@ firebase.auth().onAuthStateChanged((user) => {
                 } else {
                     alert('취소하셨습니다.')
                 }
+            })
+            $("button.modify").click(()=>{
+                window.location.href = `/edit.html?id=${doc.id}`
             })
         })
     } else {

@@ -63,10 +63,13 @@ firebase.auth().onAuthStateChanged(function(user) {
                 if (result.data().uid == user.uid) {
                     let btn = `
                                 <div class='btn_area_modify'>
-                                    <button type="button" class="btn btn-primary modify"><a href="/edit.html?id=${result.id}">수정</a></button>
-                                    <button type="button" class="btn btn-danger delete" data-id='${result.id}'>삭제</button>
+                                    <button type="button" class="modify">수정</button>
+                                    <button type="button" class="delete" data-id='${result.id}'>삭제</button>
                                 </div>`
                     document.querySelector('div.wrapper').insertAdjacentHTML("beforeend", btn)
+                    $('button.modify').click(()=> {
+                        window.location.href = `/edit.html?id=${result.id}`
+                    })
                 }
 
                 const mainPostId = result.id
