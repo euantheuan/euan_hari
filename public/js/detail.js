@@ -141,7 +141,6 @@ firebase.auth().onAuthStateChanged(function(user) {
 
             $("#btnReply").click(function() {
                 const content = $("div.replyInput > textarea").val();
-                if (confirm('댓글을 저장하시겠습니까?')) {
                     const currentUser = firebase.auth().currentUser;
                     const userName = currentUser.displayName;
                     const userID = currentUser.uid;
@@ -159,7 +158,6 @@ firebase.auth().onAuthStateChanged(function(user) {
                             alert('에러가 발생했습니다.')
                             console.log(error)
                         })
-                    }
                     uploadReply();
                 }
 
