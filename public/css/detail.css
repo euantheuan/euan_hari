@@ -75,27 +75,24 @@ div.btn_area_modify button:first-child {
 }
 
 div.thisreply {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 div.thisreply div.reply_content {
-    padding: 10px 20px;
-    background-color: #f2f2f2;
-    border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: start;
     flex-wrap: wrap;
     width: 100%;
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color: #f2f2f2;
 }
 div.thisreply p.content_reply {
     width: calc(80% - 165px);
     color: black;
 }
 div.thisreply p.writer_reply {
-    width: auto;    
+    width: 20%;    
     text-align: right;
     margin-right: 15px;
     font-size: 14px;
@@ -105,6 +102,45 @@ div.thisreply p.date_reply {
     max-width: 150px;
     font-size: 14px;
     text-align: right;
+}
+div.thisreply div.replyOrDelete {
+    text-align: right;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+div.thisreply div.reply {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+div.thisreply button {
+    padding: 7px 10px;
+    font-size: 14px;
+    color: white;
+    display: block;
+    width: 50px;
+    margin-left: 15px;
+    box-sizing: border-box;
+}
+div.thisreply div.replyOrDelete button.rereply {
+    background-color: #0d6efd;
+}
+div.thisreply div.replyOrDelete button.rereply:hover,
+div.thisreply div.replyOrDelete button.rereply:focus {
+    background-color: #0b5ed7
+}
+div.thisreply button.btnDeleteReply,
+.btnDeleteRereply {
+    background-color: #dc3545;
+}
+div.thisreply button.btnDeleteReply:hover,
+div.thisreply button.btnDeleteReply:focus,
+.btnDeleteRereply:hover,
+.btnDeleteRereply:focus {
+    background-color: #bb2d3b;
 }
 
 div.replyInput {
@@ -124,6 +160,52 @@ span.btnDeleteReply {
     text-align: center;
     cursor: pointer;
 }
+
+div.replyOrDelete textarea.rereplyInput {
+    margin-left: 30px;
+    width: calc(100% - 95px)
+}
+
+div.thisrereply {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+div.thisrereply div.rereply {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    width: 100%;
+    flex-wrap: wrap;
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color: #f2f2f2;
+    margin-left: 30px;
+}
+div.thisrereply div.rereply div.rereply_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+div.thisrereply div.rereply div.rereply_content p.content_rereply {
+    width: calc(80% - 165px);
+    color: black;
+}
+div.thisrereply div.rereply div.rereply_content p.writer_rereply {
+    width: 20%;
+    text-align: right;
+    margin-right: 15px;
+    font-size: 14px;
+}
+div.thisrereply div.rereply div.rereply_content p.date_rereply {
+    width: 150px;
+    font-size: 14px;
+    text-align: right;
+}
+
 
 @media screen and (max-width: 768px) {
     div.wrapper {
@@ -168,6 +250,22 @@ span.btnDeleteReply {
     }
     div.thisreply p.date_reply {
         width: auto;
+        text-align: right;
+    }
+    
+    div.thisrereply div.rereply div.rereply_content p.content_rereply {
+        width: 100%;
+        color: black;
+    }
+    div.thisrereply div.rereply div.rereply_content p.writer_rereply {
+        width: auto;
+        text-align: left;
+        margin-right: 15px;
+        font-size: 14px;
+    }
+    div.thisrereply div.rereply div.rereply_content p.date_rereply {
+        width: 150px;
+        font-size: 14px;
         text-align: right;
     }
 }
