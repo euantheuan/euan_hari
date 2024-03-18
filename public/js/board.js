@@ -1,6 +1,17 @@
 const db = firebase.firestore();
 const storage = firebase.storage();
 
+firebase.auth().onAuthStateChanged(function(user) {
+    if (!user) {
+        $("div.btn_area").remove();
+    }
+})
+
+
+$("button.upload").click(()=> {
+    window.location.href = 'uploadboard.html'
+})
+
 db.collection('board').orderBy("date", "asc").onSnapshot((snapshot) => {
     snapshot.forEach((doc) => {
         const timestamp = doc.data().date; 

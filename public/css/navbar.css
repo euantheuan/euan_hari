@@ -107,7 +107,6 @@ header div.gnb_area ul.depth01 {
     text-align: left;
 }
 header div.gnb_area ul.depth01 > li {
-    height: 100%;
     font-weight: 500;
     color: black;
 }
@@ -196,6 +195,7 @@ button {
     padding: 10px 15px;
     background-color: #ffc105;
     border-radius: 5px;
+    color: black;
 }
 button:hover, button:focus {
     background-color: #ffcd39;

@@ -150,7 +150,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                         writer: userName,
                         uid: userID
                     };
-                    function uploadReply () {
+                    function uploadReply() {
                         const repliesRef = db.collection('hari').doc(mainPostId).collection('replies');
                         repliesRef.add(replyPost).then(() => {
                             location.reload(true);
@@ -158,8 +158,8 @@ firebase.auth().onAuthStateChanged(function(user) {
                             alert('에러가 발생했습니다.')
                             console.log(error)
                         })
+                    }
                     uploadReply();
-                }
 
             })
         }).catch((error) => {

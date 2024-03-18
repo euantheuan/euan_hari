@@ -161,8 +161,9 @@ firebase.auth().onAuthStateChanged(function(user) {
                             alert('에러가 발생했습니다.')
                             console.log(error)
                         })
-                    uploadReply();
+
                 }
+                uploadReply();
 
             })
 
