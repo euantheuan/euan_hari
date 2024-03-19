@@ -75,7 +75,10 @@ div.btn_area_modify button:first-child {
 }
 
 div.thisreply {
-    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
 }
 div.thisreply div.reply_content {
     display: flex;
@@ -115,6 +118,7 @@ div.thisreply div.reply {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 div.thisreply button {
     padding: 7px 10px;
@@ -125,11 +129,11 @@ div.thisreply button {
     margin-left: 15px;
     box-sizing: border-box;
 }
-div.thisreply div.replyOrDelete button.rereply {
+div.thisreply button.rereply {
     background-color: #0d6efd;
 }
-div.thisreply div.replyOrDelete button.rereply:hover,
-div.thisreply div.replyOrDelete button.rereply:focus {
+div.thisreply button.rereply:hover,
+div.thisreply button.rereply:focus {
     background-color: #0b5ed7
 }
 div.thisreply button.btnDeleteReply,
