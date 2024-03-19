@@ -44,7 +44,7 @@ ul#board li p.title {
 }
 ul#board li p.title > a {
     display: inline-block;
-    max-width: 100%;
+    max-width: calc(100% - 30px);
     position: relative;
     text-overflow: ellipsis;
     white-space: nowrap;-webkit-line-clamp: 1;

@@ -231,7 +231,6 @@ firebase.auth().onAuthStateChanged(function(user) {
                     }
                 })
                 
-        
                 $("#btnReply").click(function() {
                     const content = $("div.replyInput > textarea").val();
                     const currentUser = firebase.auth().currentUser;
@@ -260,11 +259,6 @@ firebase.auth().onAuthStateChanged(function(user) {
             console.log(error)
             alert('에러')
         })
-        
-                
-
-        
-                
         
     } else {
             $('div.wrapper').empty();
