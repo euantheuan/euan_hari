@@ -56,8 +56,6 @@ firebase.auth().onAuthStateChanged(function(user) {
                             `;
                     $('.wrapper').append(post)
                 }
-
-                
                 
                 if (result.data().uid == user.uid) {
                     let btn = `
@@ -70,6 +68,8 @@ firebase.auth().onAuthStateChanged(function(user) {
                         window.location.href = `/edit.html?id=${result.id}`
                     })
                 }
+
+            // === 여기까지 메인 포스트 ===
 
                 const mainPostId = result.id
                 const checkReplies = function() {
@@ -125,9 +125,12 @@ firebase.auth().onAuthStateChanged(function(user) {
                                     })
                                 }
 
+                            // --- 대댓글 확인 ---
                                 const checkRereplies = function() {
-                                    const rerepliesRef = db.collection('board').doc(mainPostId).collection('replies').doc(doc.id).collection('rereplies');
-                                    rerepliesRef.orderBy("date", "asc").onSnapshot((snapshot) => {
+                                    const rereplyRef = db.collection('board').doc(mainPostId).collection('replies').doc(doc.id).collection('rereplies')
+
+                                        rereplyRef.orderBy("date", "asc").onSnapshot((snapshot) => {
+
                                         if (snapshot.size > 0) {
                                             snapshot.forEach((doc) => {
                                                 const timestamp = doc.data().date; 
@@ -140,7 +143,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                                                                                             ('0' + date.getMinutes()).slice(-2),
                                                                                             ('0' + date.getSeconds()).slice(-2)
                                                                                             ];
-                                                //댓글 본문 밑에 보여주기
+                                            //대댓글 댓글 밑에 보여주기
                                                 let rereply = `
                                                     <div class="thisrereply">
                                                         <div class="rereply">
@@ -150,31 +153,37 @@ firebase.auth().onAuthStateChanged(function(user) {
                                                                 <p class="date_rereply">${year}-${month}-${day} ${hour}:${min}:${sec}</p>
                                                             </div>
                                                         </div>
+
                                                     </div>`;
                                                 const rereply_area = document.querySelector('.rereply_area')
                                                 rereply_area.insertAdjacentHTML('beforeend', rereply)
-                
+                                        
+                                            /* // --- 대댓글 삭제 버튼 ---
                                                 if (doc.data().uid == user.uid) {
                                                     const btnDeleteRereply = `<button class="btnDeleteRereply" data-id="${doc.id}">삭제</button>`
-                                                    document.querySelector('.thisrereply').insertAdjacentHTML('beforeend', btnDeleteRereply)
-                
+                                                    const rereply_areas = document.querySelectorAll('div.rereply')
+                                                    rereply_areas.forEach((btnDeleteArea)=>{
+                                                        btnDeleteArea.insertAdjacentHTML('afterend', btnDeleteRereply)
+                                                    })
                                                     $(".btnDeleteRereply").click(function() {
                                                         let docId = $(this).data('id');
-                                        
+                                                        const thisrereply = db.collection('board').doc(mainPostId).collection('replies').doc(replyDocId).collection('rereplies').doc(docId)
+                                                        console.log(thisrereply)
                                                         if (confirm('삭제하시겠습니까?')) {
-                                                            db.collection('board').doc(mainPostId).collection('replies').doc(docId).delete().then(() => {
+                                                            thisrereply.delete().then(() => {
                                                                 alert('삭제되었습니다.')
                                                                 location.reload(true);
                                                             }).catch((error) => {
-                                                                console.log('게시글 삭제 중 에러가 발생했습니다:', error);
-                                                                alert('게시글 삭제 중 에러가 발생했습니다.')
+                                                                console.log('댓글 삭제 중 에러가 발생했습니다:', error);
+                                                                alert('댓글 삭제 중 에러가 발생했습니다.')
                                                             });
                                                         }
                                                     })
-                                                }
+                                                }  */
                                             })
                                         }
                                     })
+                                        
                                 }
                                 checkRereplies()
 
@@ -194,7 +203,6 @@ firebase.auth().onAuthStateChanged(function(user) {
                                     function uploadRereply() {
                                         const rerepliesRef = db.collection('board').doc(queryString.get('id')).collection('replies').doc(replyId).collection('rereplies');
                                         rerepliesRef.add(rereplyPost).then(() => {
-                                            alert('저장합니다.')
                                             location.reload(true);
                                         }).catch((error) => {
                                             alert('에러가 발생했습니다.')
@@ -203,62 +211,65 @@ firebase.auth().onAuthStateChanged(function(user) {
                                     }
                                     uploadRereply();
                                 })
-                            });
+                            })
                         }
                     })
+                }
+                checkReplies()
+
+                $('.delete').on('click', function() {
+                    let docId = $(this).data('id');
+        
+                    if (confirm('삭제하시겠습니까?')) {
+                        db.collection('board').doc(docId).delete().then(()=>{
+                            alert('삭제되었습니다.')
+                            window.location.href = 'board.html'
+                        }).catch((error) => {
+                            console.log('게시글 삭제 중 에러가 발생했습니다:', error);
+                            alert('게시글 삭제 중 에러가 발생했습니다.')
+                        });
+                    }
+                })
                 
-                }
-            checkReplies()
-
-            
-
-            $('.delete').on('click', function() {
-                let docId = $(this).data('id');
-
-                if (confirm('삭제하시겠습니까?')) {
-                    db.collection('board').doc(docId).delete().then(()=>{
-                        alert('삭제되었습니다.')
-                        window.location.href = 'board.html'
-                    }).catch((error) => {
-                        console.log('게시글 삭제 중 에러가 발생했습니다:', error);
-                        alert('게시글 삭제 중 에러가 발생했습니다.')
-                    });
-                }
-            })
-
-            $("#btnReply").click(function() {
-                const content = $("div.replyInput > textarea").val();
-                const currentUser = firebase.auth().currentUser;
-                const userName = currentUser.displayName;
-                const userID = currentUser.uid;
-                const replyPost = {
-                    content: content,
-                    date: new Date(),
-                    writer: userName,
-                    uid: userID
-                };
-                function uploadReply() {
-                    const repliesRef = db.collection('board').doc(queryString.get('id')).collection('replies');
-                    repliesRef.add(replyPost).then((rereply) => {
-                        db.collection('board').doc(queryString.get('id')).collection('replies').doc(rereply.id).collection('rereplies').doc().set({initialField: true});
-                        location.reload(true);
-                    }).catch((error) => {
-                        alert('에러가 발생했습니다.')
-                        console.log(error)
-                    })
-                }
-                uploadReply();
-
-            })
-            
-        }).catch((error) => {
+        
+                $("#btnReply").click(function() {
+                    const content = $("div.replyInput > textarea").val();
+                    const currentUser = firebase.auth().currentUser;
+                    const userName = currentUser.displayName;
+                    const userID = currentUser.uid;
+                    const replyPost = {
+                        content: content,
+                        date: new Date(),
+                        writer: userName,
+                        uid: userID
+                    };
+                    function uploadReply() {
+                        const repliesRef = db.collection('board').doc(queryString.get('id')).collection('replies');
+                        repliesRef.add(replyPost).then((rereply) => {
+                            db.collection('board').doc(queryString.get('id')).collection('replies').doc(rereply.id).collection('rereplies').doc().set({initialField: true});
+                            location.reload(true);
+                        }).catch((error) => {
+                            alert('에러가 발생했습니다.')
+                            console.log(error)
+                        })
+                    }
+                    uploadReply();
+        
+                })
+        }).catch((error)=>{
             console.log(error)
-            alert('에러가 발생했습니다.')
+            alert('에러')
         })
+        
+                
+
+        
+                
+        
     } else {
-        $('div.wrapper').empty();
-        let signIn = "<div class='alert'><p><a href='login.html'>로그인 후 이용해주세요.</a></p></div>"
-        $('div.wrapper').append(signIn);
+            $('div.wrapper').empty();
+            let signIn = "<div class='alert'><p><a href='login.html'>로그인 후 이용해주세요.</a></p></div>"
+            $('div.wrapper').append(signIn);
     }
 })
 
