@@ -68,7 +68,7 @@ firebase.auth().onAuthStateChanged(function(user) {
                                 </div>`
                     document.querySelector('div.wrapper').insertAdjacentHTML("beforeend", btn)
                     $('button.modify').click(()=> {
-                        window.location.href = `/edit.html?id=${result.id}`
+                        window.location.href = `/edithari.html?id=${result.id}`
                     })
                 }
 

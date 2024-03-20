@@ -151,7 +151,7 @@ div.replyInput {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 div.replyInput textarea {
     width: calc(100% - 100px)
