@@ -17,7 +17,7 @@ $('#modify').click(function() {
      function updateToFirestore(changed) {
           db.collection('hari').doc(postId).update(changed).then(() => {
                alert('수정되었습니다.')
-               window.location.href = `/detail.html?id=${postId}`
+               window.location.href = `/detailhari.html?id=${postId}`
           }).catch((error) => {
                console.log(error)
                alert('에러가 발생했습니다.')
